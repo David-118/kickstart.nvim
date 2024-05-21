@@ -90,6 +90,11 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Indent Settings
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -595,7 +600,7 @@ require('lazy').setup({
       }
 
       -- Ensure the servers and tools above are installed
-      --  To check the current status of installed tools and/or manually install
+      --  To check the curent status of installed tools and/or manually install
       --  other tools, you can run
       --    :Mason
       --
@@ -837,7 +842,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'qmljs', 'qmldir', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -887,7 +892,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
