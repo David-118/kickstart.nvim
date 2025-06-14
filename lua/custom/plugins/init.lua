@@ -5,6 +5,7 @@
 return {
   {
     'mfussenegger/nvim-dap',
+    'mfussenegger/nvim-dap-python',
     dependencies = {
       'rcarriga/nvim-dap-ui',
       'theHamsta/nvim-dap-virtual-text',
@@ -18,12 +19,19 @@ return {
       dap.set_log_level 'DEBUG'
 
       require('dapui').setup()
+      require('dap-python').setup 'python3'
       require('nvim-dap-virtual-text').setup {}
 
       dap.adapters.lldb = {
         type = 'executable',
-        command = '/usr/bin/lldb-vscode',
+        command = '/usr/bin/lldb-dap',
         name = 'lldb',
+      }
+
+      dap.adapters.delve = {
+        type = 'executable',
+        command = '/usr/bin/delv',
+        name = 'delve',
       }
 
       dap.configurations.c = {
@@ -49,7 +57,9 @@ return {
       vim.keymap.set('n', '<space>gb', dap.run_to_cursor)
 
       --eval var under cursor
-      vim.keymap.set('n', '<space>?', dap.restart)
+      vim.keymap.set('n', '<space>?', function()
+        require('dapui').eval(nil, { enter = true })
+      end)
 
       vim.keymap.set('n', '<F1>', dap.continue)
       vim.keymap.set('n', '<F2>', dap.step_into)

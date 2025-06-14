@@ -91,8 +91,9 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Indent Settings
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
 vim.opt.expandtab = true
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
@@ -307,7 +308,10 @@ require('lazy').setup({
   -- you do for a plugin at the top level, you can do for a dependency.
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
-
+  { -- Intergration with tmux
+    'christoomey/vim-tmux-navigator',
+    lazy = false,
+  },
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
@@ -583,6 +587,7 @@ require('lazy').setup({
         tsserver = {},
         jdtls = {},
         zls = { autoformat = false },
+        cmake = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
